@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <link rel="stylesheet" href="{% static '/style.css' %}">
+<title>Employees</title>
+</head>
+<body>
+{% include "navbar.html" %}
+{% block content %}
+<ul>
+{% for employee in employees %}
+    {% if employee.group %}
+    <b>{{employee}}</b> - {{employee.job_title}} in group {{employee.group}}
+    <p>
+        <a href="{% url 'employee' employee.id %}">
+            <img style="width: 50px; border-radius: 200px;" src="{{employee.profile_pic.url}}"/>
+        </a>
+    </p>
+    <hr>
+    {% endif %}
+{% endfor %}
+{% endblock %}
+</ul>
+<hr>
+</body>
+</html>

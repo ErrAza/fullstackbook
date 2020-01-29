@@ -1,0 +1,13 @@
+{% load static %}
+{% block content %}
+<head>
+    <link rel="stylesheet" href="{% static '/navbar.css' %}">
+</head>
+
+<div class="navbar">
+    <ul class="ulist">
+        <li class="list"><a href="{% url 'index' %}">Employees</a></li>
+        <li class="list"><a href="{% url 'projects' %}">Projects</a></li>
+    </ul>
+</div>
+{% endblock %}

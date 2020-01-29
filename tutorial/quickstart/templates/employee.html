@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <link rel="stylesheet" href="{% static '/style.css' %}">
+<title>Employee</title>
+</head>
+<body>
+{% include "navbar.html" %}
+<h1>{{employee}}</h1>
+<hr>
+<img src="{{employee.profile_pic.url}}" alt="Avatar" style="width: 200px; border-radius: 200px;"/>
+<hr>
+<li>{{employee.job_title}}</li>
+<h3>Projects</h3>
+{% if projects %}
+<ul>
+    {% for project in projects %}
+        <li>
+            {{project.name}}
+        </li>
+    {% endfor %}
+</ul>
+{% endif %}
+<hr>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <link rel="stylesheet" href="{% static '/style.css' %}">
+<title>Projects</title>
+</head>
+<body>
+{% include "navbar.html" %}
+<ul>
+{% for project in projects %}
+    <li style="{% if project.is_active %} color: green; {% else %} color: red; {% endif %}"><b>{{project.name}}</b>
+    {% if project.employees %}
+        <ul>
+            {% for employee in project.employees.all %}
+                <a href="{% url 'employee' employee.id %}">
+                    <img style="width: 50px; border-radius: 200px;" src="{{employee.profile_pic.url}}"/>
+                </a>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    </li>
+    <hr>
+{% endfor %}
+</ul>
+</body>
+</html>
